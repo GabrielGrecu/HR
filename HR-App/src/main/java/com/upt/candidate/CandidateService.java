@@ -1,5 +1,6 @@
 package com.upt.candidate;
 
+import com.upt.exception.ResourceNotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class CandidateService {
 
     public Candidate getCandidate(Integer id) {
         return candidateDao.selectCandidateById(id).orElseThrow(
-                () -> new IllegalArgumentException("Candidate with id [%s] not found".formatted(id))
+                () -> new ResourceNotFound("Customer with id [%s] not found".formatted(id))
         );
     }
 }
